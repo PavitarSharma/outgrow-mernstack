@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import NewsCard from "./NewsCard";
+import "./News.css";
 const News = ({ news }) => {
+  // console.log(news);
   return (
-    <div>
-      <ul>
-        {news.map((article) => (
-          <li key={article._id}>
-            <h3>{article.title}</h3>
-            <p>{article.description}</p>
-            <p>{article.source}</p>
-            <p>{article.publishedAt}</p>
-            <a href={article.url}>Read more</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {news.length > 0 ? (
+        <div className="news_grid">
+          {news.map((article) => (
+            <NewsCard key={article._id} data={article} />
+          ))}
+        </div>
+      ) : (
+        <h2>Not Found</h2>
+      )}
+    </>
   );
 };
 

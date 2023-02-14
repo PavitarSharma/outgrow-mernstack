@@ -5,8 +5,9 @@ const newsSchema = new Schema({
   title: String,
   description: String,
   url: String,
-  imageUrl: String,
+  urlToImage: String,
   source: String,
+  content: String,
   publishedAt: Date,
 });
 
