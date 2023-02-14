@@ -11,7 +11,7 @@ const Home = () => {
   
 
   const handleSearch = async () => {
-    const response = await axios.get("http://localhost:5000/api/news", {
+    const response = await axios.get("https://outgrow-backend.onrender.com/api/news", {
       params: { q: searchQuery, sources: selectedSources.join(",") },
     });
     setNews(response.data.news);
