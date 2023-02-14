@@ -8,28 +8,40 @@ const Home = () => {
   const [news, setNews] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSources, setSelectedSources] = useState([]);
-  
 
   const handleSearch = async () => {
-    const response = await axios.get("https://outgrow-backend.onrender.com/api/news", {
-      params: { q: searchQuery, sources: selectedSources.join(",") },
-    });
+    const response = await axios.get(
+      "https://outgrow-backend.onrender.com/api/news",
+      {
+        params: { q: searchQuery, sources: selectedSources.join(",") },
+      }
+    );
     setNews(response.data.news);
   };
 
- 
-
-  useEffect(() => {
-    handleSearch();
-  }, [selectedSources, searchQuery]);
+  // useEffect(() => {
+  //   handleSearch();
+  // }, [selectedSources, searchQuery]);
 
   const sourceData = [...new Set(news.map((data) => data.source))];
 
-
   function handleFilterChange(selected) {
     setSelectedSources(selected);
-    
   }
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.get(
+          "https://outgrow-backend.onrender.com/api/news"
+        );
+        setNews(response.data.news);
+      } catch (err) {
+        console.error(`Error fetching news: ${err.message}`);
+      }
+    };
+    fetchNews();
+  }, []);
+
   return (
     <div className="news">
       <SearchBar
