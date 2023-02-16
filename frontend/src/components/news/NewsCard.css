@@ -1,5 +1,6 @@
 .article {
   border-radius: 10px;
+  width: 100%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -43,6 +44,7 @@
     opacity: 0.5;
     font-weight: 600;
 }
+
 
 @media (max-width: 668px) {
     .article_image {

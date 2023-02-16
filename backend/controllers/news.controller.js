@@ -4,17 +4,17 @@ import axios from "axios";
 // Fetch news from News API once per day
 const fetchNews = async () => {
   try {
-    const response = await axios.get("http://newsapi.org/v2/everything", {
-      params: {
-        q: 'tesla',
-        from: '2023-01-14',
-        sortBy: 'publishedAt',
-        apiKey: "ad7f70dd8c1e4418b9f41f9fdcfc203b"
-      },
+    const response = await axios.get("https://newsapi.org/v2/top-headlines", {
       // params: {
-      //   country: "us",
-      //   apiKey: "ad7f70dd8c1e4418b9f41f9fdcfc203b",
+      //   q: 'tesla',
+      //   from: '2023-01-14',
+      //   sortBy: 'publishedAt',
+      //   apiKey: "ad7f70dd8c1e4418b9f41f9fdcfc203b"
       // },
+      params: {
+        country: "us",
+        apiKey: "ad7f70dd8c1e4418b9f41f9fdcfc203b",
+      },
     });
 
     const news = response.data.articles.map((article) => ({
